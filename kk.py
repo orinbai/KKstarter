@@ -2,7 +2,16 @@ from bs4 import BeautifulSoup as BS
 
 def cardParse(tmpstr):
     tmpsoup = BS(tmpstr)
-    print tmpsoup
+    nowlayer = tmpsoup.find('div', class_='project-thumbnail')
+    link = nowlayer.a['href']
+    dataID = nowlayer.a['data-pid']
+    nowlayer = nowlayer.find_next_sibling()
+    title = nowlayer.h6.string
+    author = nowlayer.find('p', class_='project-byline').string
+    brief = nowlayer.find('p', class_='project-blurb').string
+    nowlayer = nowlayer.find_next_sibling()
+    print nowlayer.div.a.span
+    print brief
     return 1
     usefulhtml = soup.find_all('ul',id='projects_list')
     if usefulhtml:
@@ -27,7 +36,7 @@ usefulhtml = BS(str(soup.find('ul', id='projects_list')))
 i = 0
 for li_str in usefulhtml.find_all('li', class_='project col col-3 mb4'):
     print '%s %d %s' % ("="*100,i,'='*100)
-    cardParse(str(li_str))
+    cardParse(str(li_str.div))
     break
     i += 1
 
