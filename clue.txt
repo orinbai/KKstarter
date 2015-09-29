@@ -1,0 +1,32 @@
+o. All list start at label: <ul> with id = 'projects_list'
+2. Every item brief intro start at label: <li class="project col col-3 mb4">
+    I perfer to get the link from <div class="project-thumbnail">:
+        like: <a data-pid="126918586" href="/projects/teamluuv/solidluuv-the-all-in-one-camera-stabilizer?ref=category" target="">
+
+    Primary Content List:
+    1. div class="project-card-content", all blurb in this snap.
+        a. <h6 class="project-title"> & <a> content is the title.
+        b. <p class="project-byline"> show the author
+        c. <p class="project-blurb"> show the brief intro
+
+    2. <div class="project-card-footer">, defined card foot elements.
+        a. <div class="project-location"> give us Location of project.
+            Maybe parse <span class="location-name"> content is a good approach.
+        b. <div class="project-stats-container"> offer some data of the project.
+            use data around bar chart: <div class="project-progress-bar">
+                <ul class="project-stats">
+                every <li>
+                    a. <div class="project-stats-value"> Percents of Complete
+                    b. <span class="project-stats-label"> Project status, means it is in progress.
+
+                    a. <div class="project-stats-value">
+                        <span class="money eur no-code">, need class to confirm Currency Unit
+                    b. <span class="project-stats-label"> need is content, maybe is binary variable.
+                    
+                    a. <div class="project-stats-value"> value status
+
+                    a. <li class="ksr_page_timer" data-end_time="2015-10-31T04:00:00-04:00"> need date info.
+
+
+                
+        
