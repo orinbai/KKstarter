@@ -1,17 +1,32 @@
+import re
 from bs4 import BeautifulSoup as BS
 
 def cardParse(tmpstr):
     tmpsoup = BS(tmpstr)
+    ### 1 layer ###
     nowlayer = tmpsoup.find('div', class_='project-thumbnail')
     link = nowlayer.a['href']
     dataID = nowlayer.a['data-pid']
+    print dataID, link
+    ### 2 layer ###
     nowlayer = nowlayer.find_next_sibling()
     title = nowlayer.h6.string
     author = nowlayer.find('p', class_='project-byline').string
     brief = nowlayer.find('p', class_='project-blurb').string
-    nowlayer = nowlayer.find_next_sibling()
-    print nowlayer.div.a.span
+    print title, '|', author
     print brief
+    ### 3 layer ###
+    nowlayer = nowlayer.find_next_sibling()
+    locName = nowlayer.find('span', class_='location-name').string
+    valuePct = nowlayer.find('div', class_='project-stats-value').string
+    statslab = nowlayer.find('span', class_='project-stats-label').string
+    nowMoney = nowlayer.find('span', class_=re.compile('^money')).string
+    endTime = nowlayer.find('li', class_='ksr_page_timer')['data-end_time']
+    print valuePct,statslab,nowMoney,endTime
+    return 1
+    for children in nowlayer.descendants:
+        print children
+        print '-'*80
     return 1
     usefulhtml = soup.find_all('ul',id='projects_list')
     if usefulhtml:
